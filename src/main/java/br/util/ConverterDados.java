@@ -1,4 +1,4 @@
-package br.gov.pa.sefa.nfae.core.util;
+package br.util;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -245,4 +245,23 @@ public class ConverterDados {
 	        return builder.toString();
 	    }
 	 
+	 
+	 public  static String tratarValorMoeda(String valor){
+			if(valor!=null && !valor.equals(""))
+				return "\'"+valor.replace("$", "").replace(".","").trim()+"\'";
+			
+			return null;
+	}
+	 
+	public static void main(String[] args) {
+		String valor="Calculado sobre o débito do ICMS.";
+		System.out.println(padronizaString(valor));
+	} 
+	public static String  padronizaString(String valor){
+		return valor.replaceAll("[' ']","")
+				    .replaceAll("[éêè]", "e")
+				    .replaceAll("[çÇ]","c")
+				    .replaceAll("[ãáàâ]", "a")
+				    .replace(".", "").toUpperCase();
+	}
 }

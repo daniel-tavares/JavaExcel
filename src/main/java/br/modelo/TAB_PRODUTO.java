@@ -1,10 +1,11 @@
-import java.math.BigDecimal;
+package br.modelo;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Produto {
+public class TAB_PRODUTO {
 
-	Integer ID_PRODUTO;
+	String ID_PRODUTO;
 	String ID_UNIDADE_MEDIDA;
 	String CODIGO_PRODUTO;
 	String DESCRICAO_PRODUTO;
@@ -28,7 +29,6 @@ public class Produto {
 	String TRAT_TRIB_ICMS_CREDITO;
 	String TRAT_TRIB_RED_BC_INTERNO;
 	String TRAT_TRIB_RED_BC_INTEREST;
-	String TRAT_TRIB_CREDITO_PRESUMIDO;
 	String TRAT_TRIB_ICMS_CRED_FRETE;
 	String TRAT_TRIB_MVA_INTERNO;
 	String TRAT_TRIB_MVA_INTEREST;
@@ -36,20 +36,23 @@ public class Produto {
 	String TRAT_TRIB_REDU_ALIQ_INTEREST;
 	String ID_EXCLUSAO_LOGICA;
 	String JUSTIFICATIVA_TRATAMENTO_TRIB;
+	String TRAT_TRIB_CRED_PRES_INTERNO;
+	String TRAT_TRIB_CRED_PRES_INTEREST;
+	String TIPO_CALCULO_CREDITO_PRESUMIDO;
 
-	List<NCM> listaNcm = new ArrayList<NCM>();
+	List<TAB_NCM> listaNcm = new ArrayList<TAB_NCM>();
 
-	Receita receita;
+	TAB_RECEITA_INTERNA receita;
 
-	public Produto() {
+	public TAB_PRODUTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Integer getID_PRODUTO() {
+	public String getID_PRODUTO() {
 		return ID_PRODUTO;
 	}
 
-	public void setID_PRODUTO(Integer iD_PRODUTO) {
+	public void setID_PRODUTO(String iD_PRODUTO) {
 		ID_PRODUTO = iD_PRODUTO;
 	}
 
@@ -205,8 +208,6 @@ public class Produto {
 		ID_EXIGE_DETALHAMENTO = iD_EXIGE_DETALHAMENTO;
 	}
 
-
-
 	public String getTRAT_TRIB_ICMS_DEBITO() {
 		return TRAT_TRIB_ICMS_DEBITO;
 	}
@@ -239,12 +240,28 @@ public class Produto {
 		TRAT_TRIB_RED_BC_INTEREST = tRAT_TRIB_RED_BC_INTEREST;
 	}
 
-	public String getTRAT_TRIB_CREDITO_PRESUMIDO() {
-		return TRAT_TRIB_CREDITO_PRESUMIDO;
+	public String getTRAT_TRIB_CRED_PRES_INTERNO() {
+		return TRAT_TRIB_CRED_PRES_INTERNO;
 	}
 
-	public void setTRAT_TRIB_CREDITO_PRESUMIDO(String tRAT_TRIB_CREDITO_PRESUMIDO) {
-		TRAT_TRIB_CREDITO_PRESUMIDO = tRAT_TRIB_CREDITO_PRESUMIDO;
+	public void setTRAT_TRIB_CRED_PRES_INTERNO(String tRAT_TRIB_CRED_PRES_INTERNO) {
+		TRAT_TRIB_CRED_PRES_INTERNO = tRAT_TRIB_CRED_PRES_INTERNO;
+	}
+
+	public String getTRAT_TRIB_CRED_PRES_INTEREST() {
+		return TRAT_TRIB_CRED_PRES_INTEREST;
+	}
+
+	public void setTRAT_TRIB_CRED_PRES_INTEREST(String tRAT_TRIB_CRED_PRES_INTEREST) {
+		TRAT_TRIB_CRED_PRES_INTEREST = tRAT_TRIB_CRED_PRES_INTEREST;
+	}
+
+	public String getTIPO_CALCULO_CREDITO_PRESUMIDO() {
+		return TIPO_CALCULO_CREDITO_PRESUMIDO;
+	}
+
+	public void setTIPO_CALCULO_CREDITO_PRESUMIDO(String tIPO_CALCULO_CREDITO_PRESUMIDO) {
+		TIPO_CALCULO_CREDITO_PRESUMIDO = tIPO_CALCULO_CREDITO_PRESUMIDO;
 	}
 
 	public String getTRAT_TRIB_ICMS_CRED_FRETE() {
@@ -303,19 +320,19 @@ public class Produto {
 		JUSTIFICATIVA_TRATAMENTO_TRIB = jUSTIFICATIVA_TRATAMENTO_TRIB;
 	}
 
-	public List<NCM> getListaNcm() {
+	public List<TAB_NCM> getListaNcm() {
 		return listaNcm;
 	}
 
-	public void setListaNcm(List<NCM> listaNcm) {
+	public void setListaNcm(List<TAB_NCM> listaNcm) {
 		this.listaNcm = listaNcm;
 	}
 
-	public Receita getReceita() {
+	public TAB_RECEITA_INTERNA getReceita() {
 		return receita;
 	}
 
-	public void setReceita(Receita receita) {
+	public void setReceita(TAB_RECEITA_INTERNA receita) {
 		this.receita = receita;
 	}
 
@@ -333,12 +350,14 @@ public class Produto {
 				+ ID_EXIGE_DETALHAMENTO + ", TRAT_TRIB_ICMS_DEBITO=" + TRAT_TRIB_ICMS_DEBITO
 				+ ", TRAT_TRIB_ICMS_CREDITO=" + TRAT_TRIB_ICMS_CREDITO + ", TRAT_TRIB_RED_BC_INTERNO="
 				+ TRAT_TRIB_RED_BC_INTERNO + ", TRAT_TRIB_RED_BC_INTEREST=" + TRAT_TRIB_RED_BC_INTEREST
-				+ ", TRAT_TRIB_CREDITO_PRESUMIDO=" + TRAT_TRIB_CREDITO_PRESUMIDO + ", TRAT_TRIB_ICMS_CRED_FRETE="
+				+ ", TRAT_TRIB_CRED_PRES_INTERNO=" + TRAT_TRIB_CRED_PRES_INTERNO + ", TRAT_TRIB_ICMS_CRED_FRETE="
 				+ TRAT_TRIB_ICMS_CRED_FRETE + ", TRAT_TRIB_MVA_INTERNO=" + TRAT_TRIB_MVA_INTERNO
 				+ ", TRAT_TRIB_MVA_INTEREST=" + TRAT_TRIB_MVA_INTEREST + ", TRAT_TRIB_REDU_ALIQ_INTERNA="
 				+ TRAT_TRIB_REDU_ALIQ_INTERNA + ", TRAT_TRIB_REDU_ALIQ_INTEREST=" + TRAT_TRIB_REDU_ALIQ_INTEREST
 				+ ", ID_EXCLUSAO_LOGICA=" + ID_EXCLUSAO_LOGICA + ", JUSTIFICATIVA_TRATAMENTO_TRIB="
-				+ JUSTIFICATIVA_TRATAMENTO_TRIB + "]";
+				+ JUSTIFICATIVA_TRATAMENTO_TRIB + ", TRAT_TRIB_CRED_PRES_INTEREST=" + TRAT_TRIB_CRED_PRES_INTEREST
+				+ ", TIPO_CALCULO_CREDITO_PRESUMIDO=" + TIPO_CALCULO_CREDITO_PRESUMIDO + ", listaNcm=" + listaNcm
+				+ ", receita=" + receita + "]";
 	}
 
 }

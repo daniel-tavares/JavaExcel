@@ -1,17 +1,18 @@
-package br.controller;
+package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import br.modelo.TAB_PRODUTO;
-import br.util.ConverterDados;
+
 import jxl.Sheet;
+import modelo.Produto;
+import util.ConverterDados;
 
 
 public class CreditoPresumidoController {
 	 
 	Sheet sheet;
 	Integer numeroMaximoLinha; 
-	List<TAB_PRODUTO> listaProduto=new ArrayList<TAB_PRODUTO>();
+	List<Produto> listaProduto=new ArrayList<Produto>();
 	
 	public CreditoPresumidoController(Sheet sheet, Integer numeroMaximoLinha) {
 		this.sheet=sheet;
@@ -31,7 +32,7 @@ public class CreditoPresumidoController {
 			 else
 			    tipo="0";	  
 				 
-			sb.append("UPDATE NFAE.TAB_PRODUTO p SET p.TIPO_CALCULO_CREDITO_PRESUMIDO="+tipo+", p.TRAT_TRIB_CRED_PRES_INTERNO="+sheet.getCell(15,linha).getContents()+" WHERE p.ID_PRODUTO="+sheet.getCell(0,linha).getContents()+";\n");
+			sb.append("UPDATE NFAE.TAB_PRODUTO p SET p.TIPO_CALCULO_CREDITO_PRESUMIDO="+tipo+", p.TRAT_TRIB_CRED_PRES_INTEREST="+(Double.parseDouble(sheet.getCell(15,linha).getContents())/100)+" WHERE p.ID_PRODUTO="+sheet.getCell(0,linha).getContents()+";\n");
 			
 		}
 		

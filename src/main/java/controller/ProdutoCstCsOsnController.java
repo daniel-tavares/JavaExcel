@@ -1,14 +1,13 @@
-package br.controller;
+package controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import br.modelo.TAB_PRODUTO_CSOSN;
-import br.modelo.TAB_PRODUTO_CST;
-
-import br.util.ConverterDados;
 import jxl.Sheet;
+import modelo.ProdutoCsosn;
+import modelo.ProdutoCst;
+import util.ConverterDados;
 
 
 public class ProdutoCstCsOsnController {
@@ -23,8 +22,8 @@ public class ProdutoCstCsOsnController {
 	
 	Sheet sheet;
 	Integer numeroMaximoLinha; 
-	List<TAB_PRODUTO_CST> listaProdutoCst=new ArrayList<TAB_PRODUTO_CST>();
-	List<TAB_PRODUTO_CSOSN> listaProdutoCsosn=new ArrayList<TAB_PRODUTO_CSOSN>();
+	List<ProdutoCst> listaProdutoCst=new ArrayList<ProdutoCst>();
+	List<ProdutoCsosn> listaProdutoCsosn=new ArrayList<ProdutoCsosn>();
 	
 	public ProdutoCstCsOsnController(Sheet sheet, Integer numeroMaximoLinha) {
 		this.sheet=sheet;
@@ -35,11 +34,11 @@ public class ProdutoCstCsOsnController {
 	public void criarObjeto(List<String> listaCst, Integer tipoOperacao,int linha){
 		for (String cst : listaCst) {
 			if(!ConverterDados.padronizaString(getJustificativa(cst, tipoOperacao, linha)).equals(ConverterDados.padronizaString("NÃO EXIBIR ESTE CST"))){
-				TAB_PRODUTO_CST pcst=new TAB_PRODUTO_CST();
+				ProdutoCst pcst=new ProdutoCst();
 				pcst.setID_PRODUTO_CST(ConverterDados.getIntegerToString(id_produto_cst));
 				pcst.setID_PRODUTO(sheet.getCell(0,linha).getContents());
 				pcst.setID_CST(cst);
-				pcst.setID_TIPO_OPERACAO(ConverterDados.getIntegerToString(tipoOperacao));  // OPERACAO INTERNA
+				pcst.setID_TIPO_OPERACAO(ConverterDados.getIntegerToString(tipoOperacao));  
 				
 				pcst.setJUSTIFICATIVA_TRAT_TRIB((getJustificativa(cst, tipoOperacao, linha).equals(""))?"":getJustificativa(cst, tipoOperacao, linha)); 
 				listaProdutoCst.add(pcst);
@@ -60,7 +59,7 @@ public class ProdutoCstCsOsnController {
 			String remove="[ABCDEFGHIJKLMNOPQRSTUVWYXZabcdefghijklmnopqrstuvywxzçÇÃ(),.;]";
 			String conteudo=sheet.getCell(54, linha).getContents().replaceAll(remove, "").replaceAll("[' ']", "");
 			
-			//if(idProduto.equals("1")){
+			//if(idProduto.equals("6")){
 				if(conteudo.equals("")){ //O produto terá todos os CSTs
 					criarObjeto(cstInterno, 1, linha);
 					criarObjeto(cstInterestadual, 3, linha);
@@ -109,9 +108,8 @@ public class ProdutoCstCsOsnController {
 					}
 					
 					criarObjeto(listInter, 1, linha);
-					criarObjeto(listExterior, 3, linha);
-					criarObjeto(listIntra, 2, linha);
-					
+					criarObjeto(listIntra, 3, linha);
+					criarObjeto(listExterior, 2, linha);
 					
 				}
 			}
@@ -188,7 +186,7 @@ public class ProdutoCstCsOsnController {
 	public String gerarScriptInsert(){
 		StringBuilder sb=new StringBuilder();
 		sb.append("\n\n-- INTERNO\n\n");
-		for (TAB_PRODUTO_CST cst : listaProdutoCst) {
+		for (ProdutoCst cst : listaProdutoCst) {
 			   sb.append("INSERT INTO NFAE.TAB_PRODUTO_CST VALUES("+cst.getID_PRODUTO_CST()+","+cst.getID_PRODUTO()+",'"+cst.getID_CST()+"',"+cst.getID_TIPO_OPERACAO()+",'"+cst.getJUSTIFICATIVA_TRAT_TRIB()+"');\n");
 		}
 		

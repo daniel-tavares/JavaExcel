@@ -1,20 +1,20 @@
-package br.principal;
+package principal;
 
 import java.io.File;
 import java.io.IOException;
 
-import br.controller.CfopController;
-import br.controller.CreditoPresumidoController;
-import br.controller.NCMController;
-import br.controller.ProdutoController;
-import br.controller.ProdutoCstCsOsnController;
-import br.controller.ProdutoRemetenteController;
-import br.controller.ReceitaController;
-import br.util.ExportDisco;
+import controller.CfopController;
+import controller.CreditoPresumidoController;
+import controller.NCMController;
+import controller.ProdutoController;
+import controller.ProdutoCstCsOsnController;
+import controller.ProdutoRemetenteController;
+import controller.ReceitaController;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
 import jxl.read.biff.BiffException;
+import util.ExportDisco;
 
 public class Principal {
     static final String CAMINHO_ARQUIVO_PRODUTO_DAIF_GERAL="/home/danieltavares/Documentos/NFAE/A_PROCESSAR/V4-DAIF.xls";
@@ -27,8 +27,8 @@ public class Principal {
     static final String CAMINHO_DESTINO_CRED_PRESUMIDO="/home/danieltavares/Documentos/NFAE/SCRIPT/CRED_PRESUMIDO.sql";
     static final String CAMINHO_DESTINO_NCM="/home/danieltavares/Documentos/NFAE/SCRIPT/TAB_NCM.sql";
     static final String CAMINHO_DESTINO_RECEITA="/home/danieltavares/Documentos/NFAE/SCRIPT/RECEITAS.sql";
-    static final String CAMINHO_DESTINO_TIPO_REMETENTE="/home/danieltavares/Documentos/NFAE/SCRIPT/TAB_PRDUTO_REMETENTE.sql";
-    static final String CAMINHO_DESTINO_CST_CSOSN="/home/danieltavares/Documentos/NFAE/SCRIPT/PRDUTO_CST_CSOSN.sql";
+    static final String CAMINHO_DESTINO_TIPO_REMETENTE="/home/danieltavares/Documentos/NFAE/SCRIPT/TAB_PRODUTO_REMETENTE.sql";
+    static final String CAMINHO_DESTINO_CST_CSOSN="/home/danieltavares/Documentos/NFAE/SCRIPT/PRODUTO_CST_CSOSN.sql";
     static final String CAMINHO_DESTINO_CFOP="/home/danieltavares/Documentos/NFAE/SCRIPT/TAB_CFOP.sql";
     
     static final int NUMERO_LINHA_PLANILHA_PRODUTO=868;

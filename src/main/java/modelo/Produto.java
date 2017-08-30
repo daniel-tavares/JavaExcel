@@ -1,9 +1,9 @@
-package br.modelo;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TAB_PRODUTO {
+public class Produto {
 
 	String ID_PRODUTO;
 	String ID_UNIDADE_MEDIDA;
@@ -40,11 +40,11 @@ public class TAB_PRODUTO {
 	String TRAT_TRIB_CRED_PRES_INTEREST;
 	String TIPO_CALCULO_CREDITO_PRESUMIDO;
 
-	List<TAB_NCM> listaNcm = new ArrayList<TAB_NCM>();
+	List<Ncm> listaNcm = new ArrayList<Ncm>();
 
-	TAB_RECEITA_INTERNA receita;
+	ReceitaInterna receita;
 
-	public TAB_PRODUTO() {
+	public Produto() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -320,19 +320,19 @@ public class TAB_PRODUTO {
 		JUSTIFICATIVA_TRATAMENTO_TRIB = jUSTIFICATIVA_TRATAMENTO_TRIB;
 	}
 
-	public List<TAB_NCM> getListaNcm() {
+	public List<Ncm> getListaNcm() {
 		return listaNcm;
 	}
 
-	public void setListaNcm(List<TAB_NCM> listaNcm) {
+	public void setListaNcm(List<Ncm> listaNcm) {
 		this.listaNcm = listaNcm;
 	}
 
-	public TAB_RECEITA_INTERNA getReceita() {
+	public ReceitaInterna getReceita() {
 		return receita;
 	}
 
-	public void setReceita(TAB_RECEITA_INTERNA receita) {
+	public void setReceita(ReceitaInterna receita) {
 		this.receita = receita;
 	}
 

@@ -1,6 +1,6 @@
-package br.modelo;
+package modelo;
 
-public class TAB_CFOP {
+public class Cfop {
 
 	String ID_CFOP;
 	String CODIGO;

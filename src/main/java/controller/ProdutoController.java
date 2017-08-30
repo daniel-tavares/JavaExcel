@@ -1,19 +1,20 @@
-package br.controller;
+package controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import br.enun.UnidadeMedidaEnum;
-import br.modelo.TAB_PRODUTO;
-import br.util.ConverterDados;
+
+import enun.UnidadeMedidaEnum;
 import jxl.Sheet;
+import modelo.Produto;
+import util.ConverterDados;
 
 
 public class ProdutoController {
 	 
 	Sheet sheet;
 	Integer numeroMaximoLinha; 
-	List<TAB_PRODUTO> listaProduto=new ArrayList<TAB_PRODUTO>();
+	List<Produto> listaProduto=new ArrayList<Produto>();
 	
 	public ProdutoController(Sheet sheet, Integer numeroMaximoLinha) {
 		this.sheet=sheet;
@@ -28,7 +29,7 @@ public class ProdutoController {
                  
 		 for(int linha=2; linha<this.numeroMaximoLinha;linha++){
 			
-				 TAB_PRODUTO prod=new TAB_PRODUTO();
+				 Produto prod=new Produto();
 				
 				 //1. ID_PRODUTO
 				 prod.setID_PRODUTO(sheet.getCell(0,linha).getContents());
@@ -152,7 +153,7 @@ public class ProdutoController {
 	public String gerarScriptInsert(){
 		StringBuilder sb=new StringBuilder();
 		
-		for (TAB_PRODUTO produto : listaProduto) {
+		for (Produto produto : listaProduto) {
 			 sb.append("INSERT INTO nfae.tab_produto VALUES (");
 		     sb.append(produto.getID_PRODUTO()+",");
 		     sb.append(produto.getID_UNIDADE_MEDIDA()+",");

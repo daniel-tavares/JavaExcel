@@ -1,6 +1,6 @@
-package br.modelo;
+package modelo;
 
-public class TAB_PRODUTO_REMETENTE {
+public class ProdutoRemetente {
 
 	String ID_PRODUTO_REMETENTE;
 	String ID_TIPO_REMETENTE;

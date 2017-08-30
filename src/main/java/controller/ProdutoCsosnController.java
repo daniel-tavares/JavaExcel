@@ -1,23 +1,21 @@
-package br.controller;
+package controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
-import br.modelo.TAB_PRODUTO;
-import br.modelo.TAB_RECEITA_COM_EXTERIOR;
-import br.modelo.TAB_RECEITA_INTERESTADUAL;
-import br.modelo.TAB_RECEITA_INTERNA;
 import jxl.Sheet;
+import modelo.ReceitaComExterior;
+import modelo.ReceitaInterestadual;
+import modelo.ReceitaInterna;
 
 
 public class ProdutoCsosnController {
 	 
 	Sheet sheet;
 	Integer numeroMaximoLinha; 
-	List<TAB_RECEITA_INTERNA> listaReceitaInterna=new ArrayList<TAB_RECEITA_INTERNA>();
-	List<TAB_RECEITA_INTERESTADUAL> listaReceitaInterestadual=new ArrayList<TAB_RECEITA_INTERESTADUAL>();
-	List<TAB_RECEITA_COM_EXTERIOR> listaReceitaComExterior=new ArrayList<TAB_RECEITA_COM_EXTERIOR>();
+	List<ReceitaInterna> listaReceitaInterna=new ArrayList<ReceitaInterna>();
+	List<ReceitaInterestadual> listaReceitaInterestadual=new ArrayList<ReceitaInterestadual>();
+	List<ReceitaComExterior> listaReceitaComExterior=new ArrayList<ReceitaComExterior>();
 	
 	public ProdutoCsosnController(Sheet sheet, Integer numeroMaximoLinha) {
 		this.sheet=sheet;
@@ -33,7 +31,7 @@ public class ProdutoCsosnController {
 			  
 			if(!sheet.getCell(0, linha).getContents().equals("")){  
 				if(!sheet.getCell(14, linha).getContents().equals("")){ 
-				  TAB_RECEITA_INTERNA rInterna=new TAB_RECEITA_INTERNA();
+				  ReceitaInterna rInterna=new ReceitaInterna();
 				  rInterna.setID_RECEITA(id_receita_interna);
 				  rInterna.setID_PRODUTO(sheet.getCell(0, linha).getContents());
 				  rInterna.setCODIGO_RECEITA(sheet.getCell(14, linha).getContents());
@@ -43,7 +41,7 @@ public class ProdutoCsosnController {
 				}  
 				  
 				if(!sheet.getCell(15, linha).getContents().equals("")){ 
-				  TAB_RECEITA_INTERESTADUAL rInterestadual=new TAB_RECEITA_INTERESTADUAL();
+				  ReceitaInterestadual rInterestadual=new ReceitaInterestadual();
 				  rInterestadual.setID_RECEITA(id_receita_interestadual);
 				  rInterestadual.setID_PRODUTO(sheet.getCell(0, linha).getContents());
 				  rInterestadual.setCODIGO_RECEITA(sheet.getCell(15, linha).getContents());
@@ -70,13 +68,13 @@ public class ProdutoCsosnController {
 	public String gerarScriptInsert(){
 		StringBuilder sb=new StringBuilder();
 		
-		for (TAB_RECEITA_INTERNA interna : listaReceitaInterna) {
+		for (ReceitaInterna interna : listaReceitaInterna) {
 			sb.append("INSERT INTO NFAE.TAB_RECEITA_INTERNA VALUES("+interna.getID_RECEITA()+","+interna.getID_PRODUTO()+","+interna.getCODIGO_RECEITA()+","+interna.getID_CODIGO_PADRAO()+");\n");
 		}
 		
 			sb.append("\n\n");
 		
-		for (TAB_RECEITA_INTERESTADUAL interestadual : listaReceitaInterestadual) {
+		for (ReceitaInterestadual interestadual : listaReceitaInterestadual) {
 			sb.append("INSERT INTO NFAE.TAB_RECEITA_INTERESTADUAL VALUES("+interestadual.getID_RECEITA()+","+interestadual.getID_PRODUTO()+","+interestadual.getCODIGO_RECEITA()+","+interestadual.getID_CODIGO_PADRAO()+");\n");
 		}
 		

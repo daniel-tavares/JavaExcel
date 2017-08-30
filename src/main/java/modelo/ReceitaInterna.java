@@ -1,7 +1,6 @@
-package br.modelo;
+package modelo;
 
-public class TAB_RECEITA_COM_EXTERIOR {
-
+public class ReceitaInterna {
 	Integer ID_RECEITA;
 	String ID_PRODUTO;
 	String CODIGO_RECEITA;
@@ -33,4 +32,8 @@ public class TAB_RECEITA_COM_EXTERIOR {
 	public void setID_CODIGO_PADRAO(String iD_CODIGO_PADRAO) {
 		ID_CODIGO_PADRAO = iD_CODIGO_PADRAO;
 	}
+
+	
+
+
 }

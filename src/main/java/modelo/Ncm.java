@@ -1,6 +1,6 @@
-package br.modelo;
+package modelo;
 
-public class TAB_NCM {
+public class Ncm {
 
 	String ID_NCM;
 	String ID_PRODUTO;

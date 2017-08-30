@@ -1,6 +1,6 @@
-package br.enun;
+package enun;
 
-import br.util.ConverterDados;
+import util.ConverterDados;
 
 // Foi criado para evitar está 
 // alterando sempre que recebia uma nova planilha
